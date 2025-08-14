@@ -1,0 +1,7 @@
+langchain_community
+langchain
+langchain_openai
+langchain_core
+langsmith
+streamlit_feedback
+streamlit
