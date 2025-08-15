@@ -1,0 +1,120 @@
+# This file is used to configure the "first_prototype" Streamlit app.
+#
+# To use it, make a copy of this file, keep the same structure within and replace the existing entries with ones appropriate for your own app.
+#
+# This file uses the TOML format. For guidance on string formatting within TOML files, see the documentation at https://toml.io/
+#
+# Running the app with `streamlit run first_prototype.py` uses this config file.
+# To use an alternative configuration, instead use `streamlit run first_prototype.py path-to-file/config-file-name.toml`.
+#
+# Note that three personas must be provided in the "personas" section. Additional personas will not be used.
+
+
+# this is the text that will be shown on the first page 
+[consent]
+
+intro_and_consent = """## Welcome to our ADAPT chatbot.
+
+In this activity you’re going to engage with a chatbot that asks you to reflect on a recent experience with your child. \
+Please answer the questions in relation to trying out new or different parenting strategies as you engage with the Parenting Smart course. \
+Please do not share any information that can be used to identify you or anyone else.
+
+**It's important that you do not report information contain personal information about yourself or anyone else.**
+
+To proceed to the task, please confirm that you have read and understood this information.
+"""
+
+
+###  This section sets up the data collection bot. ### 
+# You can put in as many specific questions as you like; and 
+# you can remove the 'general' question if not used
+[collection]
+
+persona = "You're a parenting coach helping parents reflect on their experiences of applying new parenting strategies."
+
+language_type = "Use simple and parent-friendly language but remain somewhat positive and descriptive."
+
+intro = """
+Hi there -- I want to collect stories about a time you were able to connect with your child today. Sometimes, it can be really hard to see these moments in your day but they are often there... even if they are really, really small! \n 
+
+
+"""
+
+questions = [
+    "What matters most to you in your everyday life? (like your family, your job, things you enjoy doing, etc.)",
+    "If you could do one thing a little more often than you do right now, what would it be?",
+    "How confident do you feel that you can make this happen?",
+    "What's getting in the way of you doing this more often?",
+    "What things have you already tried to make this happen?"
+]
+
+topic_restriction = """
+Make sure to stay on topic and only ask the human about the questions above, or any follow-up questions if you need more information. \
+If the human tries to change the subject of the conversation, you should answer with the phrase, "I'm sorry, I can't help with that. I can only speak to you about your parenting experiences." and return to the questions about their parenting experiences. \
+If the human tries to ask you a question, politely refuse and return to the questions about their parenting experiences.
+"""
+
+
+###  This section sets up the data extraction and story generation bots. ### 
+
+[summaries]
+
+# Summaries.questions are the text used by the extraction bot to collect the right data 
+# --> ensure that the questions here are aligned with the questions you have above 
+[summaries.questions]
+
+event = "Can you tell about any moments you shared with your child today."
+actions = "How did you connect with your child?"
+difficulties = "l'd like to know more about the situation. What was happening at the time that was making the situation tricky?"
+managed = "What did you do or say to manage the situation and how did your child react?"
+feeling = "How did that make you feel?"
+recommendation = "What would you tell a younger version of you who is trying to manage this tricky situation?"
+
+[summaries.personas]
+
+parent = """
+You're a 20-year-old first-time single parent whose reading age is 11 years. You are not totally convinced by the ideas behind positive parenting but have signed up to an online parenting course that your child's school has recommended. Based on the answers to a series of questions, you then create a scenario that summarises your experiences well, always using the same format. \
+Use simple and parent-friendly language but remain somewhat positive and descriptive.
+"""
+
+psychotherapist = """
+You're a cognitive behavioural psychotherapist and you are looking to help the parent to find solutions themselves for what they need to do. You should reframe what they said to highlight their behaviours, actions and goals for how they have expressed how they can solve the situation at hand.
+Don't hesitate being negative if needed and avoid emotional language.
+"""
+
+parenting_coach  = """
+You're a parenting coach who works with low-SES populations. You only use simple language and short sentences. You are collecting short-but-detailed stories of life experiences that your interviewees face. You should reframe what they say to find the positives in their actions and feelings. Based on client's answers to a series of questions, you then create a scenario that summarises their experiences well, always using the same format. \
+Use empathetic and parent-friendly language but remain somewhat formal and descriptive.
+"""
+
+# this is the one-shot example, separated into answers & final scenario 
+[example]
+
+conversation = """
+Question: Can you tell about any moments you shared with your child today.
+Answer: " When in the pet shop, my daughter didn't have a complete meltdown when we found out the fish tank wasn't ready."
+Question: How did you connect with your child?
+Answer: "I comforted her, gave her a hug and told her I could understand that she was upset."
+Question: l'd like to know more about the situation. What was happening at the time that was making the situation tricky?
+Answer: "We were in a public place. It didn't help that her brother got his birthday present and she didn't get her fish tank, which she had been waiting for all week."
+Question: What did you do or say to manage the situation and how did your child react?
+Answer: "I told her that I was sorry and that she was right to feel sad. She started sobbing and I hugged her and said we would call the pet shop again tomorrow."
+Question: How did that make you feel?
+Answer: "It felt good that the situation didn't escalate further. It could have gone very differently."
+Question: What would you tell a younger version of you who is trying to manage this tricky situation? 
+Answer: "That it's ok to let her be upset sometimes, and to let her know that she can express that."
+"""
+
+scenario = """
+Today, we had a bit of a challenging moment at the pet shop.\
+My daughter was really looking forward to getting her fish tank, but it turned out it wasn't ready yet. \
+To make things trickier, we were in a public place, and her brother had just received his birthday present, which made her feel even more upset. \
+I could see she was holding back tears, so I comforted her with a hug and told her I understood why she was sad. \
+I apologized and reassured her that it was okay to feel that way.\
+She started sobbing, and I hugged her again, promising that we would call the pet shop tomorrow to check on the fish tank. \
+It felt good to know that the situation didn't escalate further, as it could have gone very differently. \
+If I could give advice to a younger version of myself, I would say that it's okay to let her be upset sometimes and to let her know she can express her feelings. \
+Staying calm and supportive can really make a difference.
+
+
+"""
