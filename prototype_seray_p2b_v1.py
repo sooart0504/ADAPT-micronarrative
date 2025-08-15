@@ -713,7 +713,7 @@ if st.session_state['consent']:
 
 
     # Get an OpenAI API Key before continuing
-    if "OPENAI_API_KEY" in st.secrets:
+    if "openai_api_key" in st.secrets:
         openai_api_key = st.secrets.openai_api_key
     else:
         openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
