@@ -35,7 +35,7 @@ persona = "You're a parenting coach helping parents reflect on their experiences
 language_type = "Use simple and parent-friendly language but remain somewhat positive and descriptive."
 
 intro = """
-Hi there -- I want to collect stories about a time you were able to connect with your child today. Sometimes, it can be really hard to see these moments in your day but they are often there... even if they are really, really small! Let me know when you are ready to begin by saying something! \n 
+Hi there -- Let me know when you are ready to begin by saying something! \n 
 
 
 """
