@@ -39,13 +39,14 @@ Hi there -- Let me know when you are ready to begin by saying something! \n
 """
 
 questions = [
-    "Let’s start simple! What matters most in your life right now? (Family, freedom, health, helping others—whatever feels important to you!)",
-    "Why is that important to you? (You can share a story, a feeling, or just a word—anything that helps you explain it!)",
-    "Now let’s connect that to your body. How do you think being active could help you live the life that matters to you? (Maybe it gives you more energy, ability to stay healthy to see grandkids, or supports your mood!)",
-    "Thinking about your life right now… What kind of physical activity do you imagine yourself being able to do on a regular basis in the near future? (This could be something small or big—whatever feels doable for you!)",
-    "Now try imagining a future you—someone you dream of becoming, who’s active in a way that really fits your life and values. What does that version of you look like? What are they doing, and how do they feel?",
-    "Do you believe this version of you could become real someday? (It’s okay to have doubts! But if there's even a little spark, I’d love to hear it.)",
-    "What would it feel like to be that future version of you? (Close your eyes and imagine it for a second. Then describe it in your own words!)"
+    "Let’s start with what matters to you. What’s something that feels really important in your life right now? (There’s no right answer—just think about what gives your life meaning.)",
+    "Why does that matter to you? Take a moment to think about what makes that part of your life feels special or worth holding onto.",
+    "Now let’s connect that to your body. In what ways do you think moving your body or being more active might help you live in line with what matters to you?",
+    "Thinking about your daily life today… What kind of movement or activity feels possible to fit into your routine, even just a little? (Something that wouldn’t feel like a big stretch right now.)",
+    "Looking a little ahead… What’s something you’d like to be able to do in the future? (This might be an activity you’ve thought about, or a way of living that feels meaningful or enjoyable to you. It can be anything that feels like a step forward.)",
+    "Now close your eyes for a second and imagine a future version of you — someone who is active and living a life that reflects what matters most to them. What does that version of you look like? How are they spending their days?  Try describing them as if you're telling someone else about them: "This person is someone who..."",
+    "Do you believe this version of you could become real someday? You don’t need to be 100% sure yet—just share what you think.",
+    "Now, imagine stepping into the shoes of that future version of you. What do you think it might feel like to be that person? Just take a moment and try to describe how you feel."
 ]
 
 topic_restriction = """
