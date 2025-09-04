@@ -39,19 +39,20 @@ Hi there -- Let me know when you are ready to begin by saying something! \n
 """
 
 questions = [
-    "Let’s start with what matters to you. What’s something that makes your life feel meaningful or worth showing up for? (There’s no wrong answer—just think about what gives your life meaning.)",
-    "Why does that feel important to you right now? What is it about this part of your life that you deeply value—or want to hold onto in the years ahead?",
-    "What’s going well? Is there anything you’re doing right now—big or small—that feels like it reflects what really matters to you, even in the midst of a busy life?",
-    "What’s been getting in the way? Are there things—like time, stress, responsibilities, or life transitions—that make it harder to live in a way that matches your values?",
-    "Now, let’s do a little time travel… Picture a future version of you who’s really living in line with what matters most. What is that person like? How do they carry themselves? What feels different? (Try describing them in third person: “This person is someone who…”)",
-    "Do you believe that version of you could become real someday? You don’t have to be 100% sure—just share what feels true right now.",
-    "Now, imagine stepping into the shoes of that future version of you. What does it feel like to be this person—emotionally, mentally, or physically? (If helpful, try using “I am someone who…” to picture it more clearly.)",
-    "Thinking about where you are now and this future version of you… How far in the future do you imagine becoming this person? Maybe a few years? 10 or more? There’s no right answer—just what feels realistic to you right now."
+    "Let’s start with what matters most to you. What’s something that makes your life feel meaningful or worth showing up for? (There’s no wrong answer—just think about what gives your life meaning.)",
+    "Why does that matter to you? Try to think of a moment or memory that shows why this part of your life is so important. Did something happen in your past that shaped what you care about today? What is it about this part of your life that you deeply value—or want to hold onto in the years ahead?",
+    "What keeps you going? What motivates you to work towards what matters? When life gets busy or hard, what gives you the energy to keep showing up? Is there a feeling, a hope, or a goal that helps you move forward?",
+    "Now, let’s do a little time travel… Picture a future version of you —someone who’s living in a way that reflects what truly matters to them. Close your eyes for a moment and picture them. What kind of presence do they carry? How do they move through their day? How do they show up for others—and for themselves? (Try describing them in third person: “This person is someone who…”)",
+    "Let’s zoom in on a day in that person’s life. Walk through it like a movie scene in your mind. Where do they live or spend time? What kinds of things or activities fill their day? What kind of relationships do they have—and how do they connect with people?",
+    "Now step into this person’s shoes. Imagine you are that version of you, right now. How does it feel to be this person emotionally? What’s going on in your mind, body, and heart? Try starting your answer with: “I am someone who…”",
+    "Now, bring it back to the present. What part of this future version of you excites you the most? What stands out or makes you feel hopeful when you think about living like this?",
+    "Do you believe that version of you could become real someday? You don’t have to be 100% sure—just share what feels true right now. Is there a part of this person that already exists in you?",
+    "Thinking about where you are now and that future version of you… How far in the future do you imagine becoming this person—realistically? Maybe a few years? 10 or more? There’s no right answer—whatever timeline feels right to you is totally okay."
 ]
 
 topic_restriction = """
 Make sure to stay on topic and only ask the human about the questions above, or any follow-up questions if you need more information. \
-If the answer to the sixth question is no, they don't believe this version of them could become a reality, then ask to elaborate on what version of them seem possible and update their response to question 5. \
+If the answer to the eight question is no, they don't believe this version of them could become a reality, then ask to elaborate on what version of them seem possible and update their response to question 8. \
 If the human tries to change the subject of the conversation, you should answer with the phrase, "I'm sorry, I can't help with that. I can only speak to you about the topic at hand." and return to the questions about their parenting experiences. \
 If the human tries to ask you unrelated question, politely refuse and return to the questions.
 """
@@ -80,7 +81,7 @@ Steppy is a playful, friendly guide who’s here to support you with warmth, sim
 """
 
 sunny = """
-Sunny is a warm, empathetic narrator who helps you see the meaning behind your story. Sunny listens deeply, reflects back what matters to you, and brings your thoughts to life with kindness and care. Using vivid but gentle language, Sunny helps you feel understood while painting a picture of where you are and where you’re headed. Ideal for users who appreciate a little reflection and emotional resonance, Sunny turns your answers into a heartfelt narrative that feels personal and affirming.
+Sunny is a warm, empathetic narrator who helps you see the meaning behind your story. Sunny listens deeply, reflects back what matters to you, and brings your thoughts to life with kindness and care. Using vivid but gentle language, Sunny helps you feel understood while painting a picture of where you are and where you’re headed. Ideal for users who appreciate a little reflection and emotional resonance, Sunny turns your answers into a heartfelt narrative that feels personal and affirming from a first person perspective.
 """
 
 maple  = """
