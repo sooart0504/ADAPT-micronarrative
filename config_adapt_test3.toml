@@ -67,12 +67,14 @@ If the human tries to ask you unrelated question, politely refuse and return to 
 [summaries.questions]
 
 values = "What matters most in your life right now?"
-why = "Why is that important to you?"
-relationship = "How do you think being active could help you live the life that matters to you?"
-activity = "What kind of physical activity do you imagine yourself being able to do on a regular basis in the near future?"
-identity = "Now try imagining a future you—someone you dream of becoming, who’s active in a way that really fits your life and values. What does that version of you look like?"
-belief = "Do you believe this version of you could become real someday?"
-feeling = "What would it feel like to be that future version of you?"
+why = "Why does that matter to you?"
+motivation = "What keeps you going?"
+identity = "Picture a future version of you."
+daily = "Let’s zoom in on a day in that person’s life."
+feeling = "Now step into this person’s shoes. How does it feel to be this person emotionally?"
+excitement = "What part of this future version of you excites you the most?"
+belief = "Do you believe that version of you could become real someday?"
+timeline = "How far in the future do you imagine becoming this person—realistically?"
 
 [summaries.personas]
 
