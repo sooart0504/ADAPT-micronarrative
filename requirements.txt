@@ -1,5 +1,6 @@
 langchain_community
 langchain
+langchain-classic 
 langchain_openai
 langchain_core
 langsmith

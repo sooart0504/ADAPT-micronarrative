@@ -1,9 +1,9 @@
 
 
 from langchain_community.chat_message_histories import StreamlitChatMessageHistory
-from langchain.memory import ConversationBufferMemory
+from langchain_classic.memory import ConversationBufferMemory #added '_classic' due to langchain updates
 from langchain_core.prompts import PromptTemplate
-from langchain.chains import ConversationChain
+from langchain_classic.chains import ConversationChain #added '_classic' due to langchain updates
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers.json import SimpleJsonOutputParser
 from langsmith import Client
