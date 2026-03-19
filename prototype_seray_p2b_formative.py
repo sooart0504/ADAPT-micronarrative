@@ -83,7 +83,7 @@ def save_to_sheet():
         scopes=["https://www.googleapis.com/auth/spreadsheets"]
     )
     client  = gspread.authorize(creds)
-    sheet   = client.open_by_key("YOUR_SHEET_ID_HERE").sheet1
+    sheet   = client.open_by_key("1wxyeAYdKC7f5LcvOxuhtYHg8MQdF41zjOoYgMPhOr2k").sheet1
 
     # Raw Q&A responses per topic
     t1 = st.session_state.get('answers_t1', {})
