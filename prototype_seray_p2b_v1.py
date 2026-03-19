@@ -635,9 +635,9 @@ def finaliseScenario():
     
         # Redirect back to Qualtrics
         st.success("Thank you! Your responses have been saved. Returning you to the survey...")
-components.html(
-    '<script>setTimeout(function(){ window.close(); }, 3000);</script>'
-    
+        components.html(
+        '<script>setTimeout(function(){ window.close(); }, 3000);</script>'
+        )
     
     # if the user still wants to continue adapting
     else:
