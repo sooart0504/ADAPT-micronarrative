@@ -207,7 +207,7 @@ def generateTopic1Stories():
     summary    = {k: answer_set.get(k, "") for k in llm_prompts.topic1_keys}
 
     chat       = ChatOpenAI(temperature=0.7, model=st.session_state.llm_model, openai_api_key=st.secrets.openai_api_key)
-    prompt_obj = PromptTemplate.from_template(llm_prompts.story_prompt_template)
+    prompt_obj = PromptTemplate.from_template(llm_prompts.topic1_story_prompt_template)
     json_parser = SimpleJsonOutputParser()
     chain      = prompt_obj | chat | json_parser
 
@@ -285,7 +285,7 @@ def generateTopicStory(topic_num, msgs, extraction_template, keys, story_key):
         key = keys[i] if i < len(keys) else f"q{i+1}"
         topic_summaries[key] = summary.get(key, "")
 
-    story_template = llm_prompts.story_prompt_template
+    story_template = getattr(llm_prompts, f"topic{topic_num}_story_prompt_template")
     prompt_obj     = PromptTemplate.from_template(story_template)
     json_parser    = SimpleJsonOutputParser()
     chain          = prompt_obj | chat | json_parser

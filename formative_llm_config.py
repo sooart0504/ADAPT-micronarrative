@@ -1,6 +1,5 @@
 import tomllib
 
-
 class LLMConfig:
 
     def __init__(self, filename):
@@ -60,8 +59,15 @@ class LLMConfig:
         self.one_shot = self._build_one_shot(config["example"])
 
         # ── Story generation templates ────────────────────────────────────────
-        self.story_prompt_template = self._build_story_prompt(
+        # ── Story generation templates (one per topic) ────────────────────────
+        self.topic1_story_prompt_template = self._build_story_prompt(
             config["summaries"]["topic1_questions"])
+
+        self.topic2_story_prompt_template = self._build_story_prompt(
+            config["summaries"]["topic2_questions"])
+
+        self.topic3_story_prompt_template = self._build_story_prompt(
+            config["summaries"]["topic3_questions"])
 
         self.final_story_prompt_template = self._build_final_story_prompt()
 
