@@ -1,0 +1,142 @@
+# Research Chatbot Configuration File
+# Updated to reflect new 3-topic flow with anchoring prompts
+
+# ─── CONSENT ──────────────────────────────────────────────────────────────────
+
+[consent]
+
+intro_and_consent = """## Hello there, and welcome!
+
+**Just a quick heads-up: Please don't share any personally identifiable information — like your name or anything that could identify you or someone else.**
+
+To keep going, tap the button below to let me know you've read and understood this. Let's get started!
+"""
+
+# ─── DATA COLLECTION ──────────────────────────────────────────────────────────
+# This section controls the chatbot persona and questions for all 3 topics.
+# Each topic has its own questions list and transition message.
+
+[collection]
+
+persona = "You are a warm, emotionally attuned guide who helps people reflect deeply on their future selves. You use gentle, empathetic, and encouraging language. You help participants feel safe to explore both their hopes and their fears. You ask one question at a time, listen carefully, and follow up naturally if an answer needs more depth. You never rush, never judge, and always make the participant feel seen and supported."
+
+language_type = "Use simple, warm, and emotionally resonant language. Be empathetic and encouraging. Avoid jargon."
+
+intro = """Hello there! I'm so glad you're here.
+
+Today, I will help you imagine future possible versions of yourself: one that aligns with your values and the way you want to live your life, and one that does not align with how you want to live your life.
+
+Take a moment to get settled for some self-reflection, and let me know when you're ready by saying something!"""
+
+topic_restriction = """Stay on topic and only ask questions related to the current topic. If the participant tries to change the subject, gently respond: "I'm sorry, I can only speak with you about the topic at hand." and return to the questions. If an answer seems very brief or unclear, gently ask a follow-up before moving on. Never answer on behalf of the participant. Never skip a question without at least a basic answer."""
+
+# Topic 1 — Ideal Future Self
+[collection.topic1]
+
+transition = ""
+
+questions = [
+    "What is it that you value deeply in your life? What, in the depth of your heart, do you wish for yourself, for your loved ones, and for the world?",
+    "Why do those values matter to you? Can you recall a specific moment or experience that shows why this is so important to you?",
+    "What do you want to preserve or grow in the years ahead?",
+    "If you could describe the person you want to become, who would that be? Describe this version of you in third person — 'This person is...'. How do they spend their time? How do they show up in their relationships and for themselves? What kind of presence or purpose guides them?",
+    "When life gets challenging, what keeps this person moving forward? What hope, value, or vision helps them push through difficult days?"
+]
+
+# Topic 2 — Ideal Day
+[collection.topic2]
+
+transition = "Great! Now that you've identified your ideal future self, let's imagine what an ideal day may look like living as this person."
+
+questions = [
+    "Now, let's do a little time travel. Imagine yourself in the coming years, living fully as the person you just described. Really step into their life and feel the moment. Picture a specific day — or even just a single scene — that would bring you deep joy. Where are you? What does the scene look like? Who else is there, if anyone?",
+    "What are you doing in this moment? What do you notice around you?",
+    "How does it feel to be this person — in your body, mind, and heart? Describe the feeling as vividly as you can.",
+    "What excites you most about this version of yourself? What stands out as you picture living this way?",
+    "How realistic does this vision feel to you right now? You don't need certainty — just share what feels true. What would help you move toward becoming this person?"
+]
+
+# Topic 3 — Feared Future Self
+[collection.topic3]
+
+transition = "Now, let's think about a future that you absolutely do not want to live. This takes courage to explore, but it can be a powerful part of understanding who you truly want to become."
+
+questions = [
+    "What is it that you fear deeply? What do you absolutely not wish for yourself, for your loved ones, or for the world?",
+    "If you could describe the person you absolutely never want to become — the version of yourself you fear most — who would that be? Describe this version of you in third person — 'This person is...'. How do they spend their time? How do they show up in their relationships and for themselves? What kind of presence do they carry?",
+    "What led this person to become who they are? What choices, habits, or circumstances shaped them?",
+    "When life gets challenging, how does this person react and cope? What do they turn to, and how does it make things worse?"
+]
+
+
+# ─── SUMMARIES ────────────────────────────────────────────────────────────────
+# This section controls the story generation for each topic.
+
+[summaries]
+
+# Extraction questions — these map conversation answers to structured data fields.
+# Keep the key names exactly as they are — they are referenced in the Python code.
+
+[summaries.topic1_questions]
+values       = "What does this person value deeply in life?"
+why          = "Why do those values matter to them?"
+preserve     = "What do they want to preserve or grow in the years ahead?"
+ideal_self   = "How do they describe their ideal future self in third person?"
+resilience   = "What keeps this person going when life gets challenging?"
+
+[summaries.topic2_questions]
+ideal_scene  = "What does an ideal day or moment look like for this person?"
+ideal_action = "What are they doing and what do they notice around them?"
+ideal_feel   = "How does it feel to be this person in body, mind, and heart?"
+ideal_excite = "What excites them most about this version of themselves?"
+ideal_real   = "How realistic does this vision feel, and what would help them get there?"
+
+[summaries.topic3_questions]
+fears        = "What does this person fear deeply?"
+feared_self  = "How do they describe their feared future self in third person?"
+feared_cause = "What choices or circumstances led this feared self to become who they are?"
+feared_cope  = "How does this feared self react and cope when life gets challenging?"
+
+# The 3 personas used to generate Topic 1 stories (participant picks one)
+[summaries.personas]
+
+steppy = """You are Steppy, a playful and encouraging storyteller. Write a short, warm, and uplifting micro-narrative story in first person that captures the essence of this person's ideal future self. Use simple, joyful language. Keep it concise — no more than a short paragraph. Make it feel personal, hopeful, and emotionally resonant."""
+
+sunny = """You are Sunny, a deeply empathetic and reflective narrator. Write a rich, heartfelt micro-narrative story in first person that brings this person's ideal future self to life. Use vivid, emotionally resonant language. The story should feel like a personal journal entry — warm, meaningful, and full of feeling. Aim for 2-3 paragraphs."""
+
+maple = """You are Maple, a grounded and clear-eyed narrator. Write a thoughtful micro-narrative story in first person that honestly reflects this person's values, direction, and future self. Use straightforward, confident language. Focus on patterns, purpose, and clarity. Keep it structured and affirming — 1-2 paragraphs."""
+
+# One-shot example to guide story generation quality
+[example]
+
+conversation = """
+Question: What do you value deeply in your life?
+Answer: Connection, creativity, and being present for the people I love.
+Question: Why do those values matter to you?
+Answer: I grew up feeling unseen, so I've always wanted to make others feel truly heard.
+Question: What do you want to preserve or grow in the years ahead?
+Answer: My relationships and my creative work — I want both to deepen.
+Question: Describe your ideal future self in third person.
+Answer: This person is calm and intentional. They make time for art every morning and show up fully for the people they love. They don't rush. They listen.
+Question: What keeps this person going when life gets hard?
+Answer: The belief that showing up, even imperfectly, is always worth it.
+"""
+
+scenario = """I am someone who moves through life with intention and care. Each morning, I carve out a little time for the creative work that makes me feel most alive — not because I have to, but because it reminds me who I am. I show up for the people I love fully and without distraction. When things get hard, I hold onto the belief that presence matters more than perfection. This is the life I am building, one quiet, meaningful moment at a time."""
+
+
+# ─── ANCHORING PROMPTS ────────────────────────────────────────────────────────
+# These are shown as a sentence-completion form after the final story.
+# The participant fills in each one. No story is generated from these.
+
+[anchoring]
+
+prompts = [
+    "On an ideal day that aligns with my values, I am someone who",
+    "When thinking about the people in my life, I want to show up as someone who",
+    "As a member of my community, I am someone who",
+    "When I face challenges in my daily life, I am someone who",
+    "When my routine is disrupted, I am someone who",
+    "When I am feeling unmotivated, I am someone who",
+    "When I am unable to work towards my future self, I am someone who"
+]
