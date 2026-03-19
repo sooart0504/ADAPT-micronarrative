@@ -634,12 +634,9 @@ def finaliseScenario():
         )
     
         # Redirect back to Qualtrics
-        # TODO: Replace the URL below with your real Qualtrics survey link before launching
-        YOUR_QUALTRICS_URL = "https://YOUR_UNIVERSITY.qualtrics.com/jfe/form/YOUR_SURVEY_ID"
-        st.success("Thank you! Your responses have been saved. Redirecting you back to the survey...")
-        components.html(
-            f'<script>setTimeout(function(){{ window.location.href = "{YOUR_QUALTRICS_URL}"; }}, 3000);</script>'
-        )
+        st.success("Thank you! Your responses have been saved. Returning you to the survey...")
+components.html(
+    '<script>setTimeout(function(){ window.close(); }, 3000);</script>'
     
     
     # if the user still wants to continue adapting
