@@ -15,6 +15,10 @@ from functools import partial
 
 import os
 import sys
+import gspread
+from google.oauth2.service_account import Credentials
+from datetime import datetime
+import streamlit.components.v1 as components
 
 from llm_config import LLMConfig
 
@@ -39,8 +43,34 @@ print(f"Configuring app using {config_file}...\n")
 # Create prompts based on configuration file
 llm_prompts = LLMConfig(config_file)
 
+# Read PID from Qualtrics URL
+participant_id = st.query_params.get("pid", "unknown")
+
 ## simple switch previously used to help debug 
 DEBUG = False
+
+# Save data to Google sheet
+def save_to_sheet(participant_id, answer_set, scenario, conversation_history):
+    creds = Credentials.from_service_account_info(
+        st.secrets["gcp_service_account"],
+        scopes=["https://www.googleapis.com/auth/spreadsheets"]
+    )
+    client = gspread.authorize(creds)
+    sheet = client.open_by_key("1wxyeAYdKC7f5LcvOxuhtYHg8MQdF41zjOoYgMPhOr2k").sheet1
+
+    # Dynamically build question prompts and responses from config
+    question_prompts = llm_prompts.questions_prompt_template
+    response_values = [str(answer_set.get(key, "")) for key in llm_prompts.summary_keys]
+
+    row = [
+        participant_id,                                      # PID
+        str(st.session_state.get("created_time", "")),      # Created_Time
+        str(datetime.now()),                                 # Completed_Time
+        *response_values,                                    # one column per Q response
+        scenario,                                            # Micro_Narrative_Output
+        str(conversation_history)                            # Full_Chat_Log
+    ]
+    sheet.append_row(row)
 
 # Langsmith set-up 
 smith_client = Client()
@@ -53,6 +83,8 @@ st.set_page_config(page_title="Study bot", page_icon="📖")
 ## initialising key variables in st.sessionstate if first run
 if 'run_id' not in st.session_state: 
     st.session_state['run_id'] = None
+if 'created_time' not in st.session_state:
+    st.session_state['created_time'] = datetime.now()
 
 if 'agentState' not in st.session_state: 
     st.session_state['agentState'] = "start"
@@ -593,6 +625,19 @@ def finaliseScenario():
         st.markdown("You've now completed the interaction and hopefully found a scenario that you liked! ")
         st.markdown(f":green[{package['scenario']}]")
     
+        # Save to Google Sheets
+        save_to_sheet(
+            participant_id=participant_id,
+            answer_set=package['answer set'],
+            scenario=package['scenario'],
+            conversation_history=package['chat history']
+        )
+    
+        # Redirect back to Qualtrics
+        st.success("Thank you! Your responses have been saved. Returning you to the survey...")
+        components.html(
+        '<script>setTimeout(function(){ window.close(); }, 3000);</script>'
+        )
     
     # if the user still wants to continue adapting
     else:

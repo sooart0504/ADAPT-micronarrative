@@ -6,3 +6,5 @@ langchain_core
 langsmith
 streamlit_feedback
 streamlit
+gspread
+google-auth
